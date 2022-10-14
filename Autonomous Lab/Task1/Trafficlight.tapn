@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN1" type="P/T net">
+    <place displayName="true" id="RedS" initialMarking="1" invariant="&lt; inf" name="RedS" nameOffsetX="0" nameOffsetY="0" positionX="885" positionY="195"/>
+    <place displayName="true" id="GreenS" initialMarking="0" invariant="&lt; inf" name="GreenS" nameOffsetX="0" nameOffsetY="0" positionX="720" positionY="495"/>
+    <place displayName="true" id="YellowS" initialMarking="0" invariant="&lt; inf" name="YellowS" nameOffsetX="0" nameOffsetY="0" positionX="1080" positionY="510"/>
+    <place displayName="true" id="Unpushed" initialMarking="2" invariant="&lt; inf" name="Unpushed" nameOffsetX="0" nameOffsetY="0" positionX="375" positionY="225"/>
+    <place displayName="true" id="Pushed" initialMarking="0" invariant="&lt; inf" name="Pushed" nameOffsetX="0" nameOffsetY="0" positionX="120" positionY="225"/>
+    <place displayName="true" id="Red" initialMarking="0" invariant="&lt; inf" name="Red" nameOffsetX="0" nameOffsetY="0" positionX="240" positionY="390"/>
+    <place displayName="true" id="Green" initialMarking="0" invariant="&lt; inf" name="Green" nameOffsetX="0" nameOffsetY="0" positionX="240" positionY="540"/>
+    <transition angle="90" displayName="true" id="TurningtoGreen" infiniteServer="false" name="TurningtoGreen" nameOffsetX="0" nameOffsetY="0" player="0" positionX="735" positionY="345" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="Turntoyellow" infiniteServer="false" name="Turntoyellow" nameOffsetX="0" nameOffsetY="0" player="0" positionX="900" positionY="525" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="TurntoRed" infiniteServer="false" name="TurntoRed" nameOffsetX="0" nameOffsetY="0" player="0" positionX="1050" positionY="345" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="Pushthebutton" infiniteServer="false" name="Pushthebutton" nameOffsetX="0" nameOffsetY="0" player="0" positionX="240" positionY="180" priority="0" urgent="false"/>
+    <transition angle="45" displayName="true" id="TurntoGreen" infiniteServer="false" name="TurntoGreen" nameOffsetX="0" nameOffsetY="0" player="0" positionX="135" positionY="330" priority="0" urgent="false"/>
+    <transition angle="135" displayName="true" id="TurningtoRed" infiniteServer="false" name="TurningtoRed" nameOffsetX="0" nameOffsetY="0" player="0" positionX="375" positionY="330" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[3,6]" nameOffsetX="0" nameOffsetY="0" source="RedS" target="TurningtoGreen" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="889" yCoord="220"/>
+      <arcpath arcPointType="false" id="1" xCoord="754" yCoord="355"/>
+    </arc>
+    <arc id="A1" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurningtoGreen" target="GreenS" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="749" yCoord="364"/>
+      <arcpath arcPointType="false" id="1" xCoord="736" yCoord="495"/>
+    </arc>
+    <arc id="A2" inscription="[3,6]" nameOffsetX="0" nameOffsetY="0" source="GreenS" target="Turntoyellow" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="749" yCoord="512"/>
+      <arcpath arcPointType="false" id="1" xCoord="910" yCoord="535"/>
+    </arc>
+    <arc id="A3" inscription="1" nameOffsetX="0" nameOffsetY="0" source="Turntoyellow" target="YellowS" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="919" yCoord="540"/>
+      <arcpath arcPointType="false" id="1" xCoord="1080" yCoord="526"/>
+    </arc>
+    <arc id="A4" inscription="[2,4]" nameOffsetX="0" nameOffsetY="0" source="YellowS" target="TurntoRed" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1091" yCoord="510"/>
+      <arcpath arcPointType="false" id="1" xCoord="1059" yCoord="364"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurntoRed" target="RedS" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1064" yCoord="354"/>
+      <arcpath arcPointType="false" id="1" xCoord="911" yCoord="219"/>
+    </arc>
+    <arc id="A6" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurningtoGreen" target="Unpushed" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="734" yCoord="360"/>
+      <arcpath arcPointType="false" id="1" xCoord="404" yCoord="244"/>
+    </arc>
+    <arc id="A7" inscription="[3,6]" nameOffsetX="0" nameOffsetY="0" source="Unpushed" target="Pushthebutton" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="375" yCoord="235"/>
+      <arcpath arcPointType="false" id="1" xCoord="259" yCoord="200"/>
+    </arc>
+    <arc id="A8" inscription="1" nameOffsetX="0" nameOffsetY="0" source="Pushthebutton" target="Pushed" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="249" yCoord="195"/>
+      <arcpath arcPointType="false" id="1" xCoord="148" yCoord="234"/>
+    </arc>
+    <arc id="A9" inscription="[5,6]" nameOffsetX="0" nameOffsetY="0" source="Pushed" target="TurntoGreen" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="137" yCoord="254"/>
+      <arcpath arcPointType="false" id="1" xCoord="149" yCoord="338"/>
+    </arc>
+    <arc id="A10" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurningtoRed" target="Unpushed" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="393" yCoord="340"/>
+      <arcpath arcPointType="false" id="1" xCoord="390" yCoord="254"/>
+    </arc>
+    <arc id="A11" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurningtoRed" target="Red" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="382" yCoord="343"/>
+      <arcpath arcPointType="false" id="1" xCoord="268" yCoord="398"/>
+    </arc>
+    <arc id="A12" inscription="[3,6]" nameOffsetX="0" nameOffsetY="0" source="Red" target="TurntoGreen" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="241" yCoord="397"/>
+      <arcpath arcPointType="false" id="1" xCoord="154" yCoord="348"/>
+    </arc>
+    <arc id="A13" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TurntoGreen" target="Green" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="148" yCoord="352"/>
+      <arcpath arcPointType="false" id="1" xCoord="248" yCoord="541"/>
+    </arc>
+    <arc id="A14" inscription="[5,6]" nameOffsetX="0" nameOffsetY="0" source="Green" target="TurningtoRed" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="263" yCoord="542"/>
+      <arcpath arcPointType="false" id="1" xCoord="386" yCoord="349"/>
+    </arc>
+    <arc id="A15" inscription="[3,6]" nameOffsetX="0" nameOffsetY="0" source="Unpushed" target="TurningtoGreen" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="404" yCoord="244"/>
+      <arcpath arcPointType="false" id="1" xCoord="734" yCoord="360"/>
+    </arc>
+  </net>
+  <k-bound bound="3"/>
+  <feature isGame="false" isTimed="true"/>
+</pnml>
