@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="Cotroller" type="P/T net">
+    <place displayName="true" id="VerifyConnection" initialMarking="1" invariant="&lt; inf" name="VerifyConnection" nameOffsetX="0" nameOffsetY="0" positionX="300" positionY="120"/>
+    <place displayName="true" id="ProcessData" initialMarking="0" invariant="&lt; inf" name="ProcessData" nameOffsetX="87" nameOffsetY="1" positionX="405" positionY="285"/>
+    <place displayName="true" id="CollectData" initialMarking="0" invariant="&lt; inf" name="CollectData" nameOffsetX="0" nameOffsetY="0" positionX="195" positionY="285"/>
+    <place displayName="true" id="ConnectionStable" initialMarking="0" invariant="&lt; inf" name="ConnectionStable" nameOffsetX="0" nameOffsetY="0" positionX="635" positionY="290"/>
+    <place displayName="true" id="MonitorDrones" initialMarking="0" invariant="&lt; inf" name="MonitorDrones" nameOffsetX="0" nameOffsetY="0" positionX="195" positionY="420"/>
+    <place displayName="true" id="ControlDrones" initialMarking="0" invariant="&lt; inf" name="ControlDrones" nameOffsetX="0" nameOffsetY="0" positionX="405" positionY="420"/>
+    <transition angle="270" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="0" nameOffsetY="0" player="0" positionX="300" positionY="210" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="T4" infiniteServer="false" name="T4" nameOffsetX="0" nameOffsetY="0" player="0" positionX="300" positionY="510" priority="0" urgent="false"/>
+    <transition angle="270" displayName="true" id="T5" infiniteServer="false" name="T5" nameOffsetX="0" nameOffsetY="0" player="0" positionX="300" positionY="360" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="VerifyConnection" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="316" yCoord="150"/>
+      <arcpath arcPointType="false" id="1" xCoord="306" yCoord="219"/>
+    </arc>
+    <arc id="A1" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="CollectData" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="315" yCoord="230"/>
+      <arcpath arcPointType="false" id="1" xCoord="223" yCoord="292"/>
+    </arc>
+    <arc id="A2" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="ProcessData" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="315" yCoord="230"/>
+      <arcpath arcPointType="false" id="1" xCoord="408" yCoord="292"/>
+    </arc>
+    <arc id="A3" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="ConnectionStable" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="225"/>
+      <arcpath arcPointType="false" id="1" xCoord="635" yCoord="301"/>
+    </arc>
+    <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="MonitorDrones" target="T4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="222" yCoord="445"/>
+      <arcpath arcPointType="false" id="1" xCoord="305" yCoord="519"/>
+    </arc>
+    <arc id="A11" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ControlDrones" target="T4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="409" yCoord="445"/>
+      <arcpath arcPointType="false" id="1" xCoord="317" yCoord="520"/>
+    </arc>
+    <arc id="A12" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T4" target="VerifyConnection" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="315" yCoord="530"/>
+      <arcpath arcPointType="false" id="1" xCoord="316" yCoord="585"/>
+      <arcpath arcPointType="false" id="2" xCoord="65" yCoord="580"/>
+      <arcpath arcPointType="false" id="3" xCoord="62" yCoord="136"/>
+      <arcpath arcPointType="false" id="4" xCoord="300" yCoord="135"/>
+    </arc>
+    <arc id="A9" inscription="[3,inf)" nameOffsetX="0" nameOffsetY="0" source="CollectData" target="T5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="224" yCoord="308"/>
+      <arcpath arcPointType="false" id="1" xCoord="325" yCoord="371"/>
+    </arc>
+    <arc id="A13" inscription="[3,inf)" nameOffsetX="1" nameOffsetY="0" source="ProcessData" target="T5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="408" yCoord="309"/>
+      <arcpath arcPointType="false" id="1" xCoord="313" yCoord="370"/>
+    </arc>
+    <arc id="A14" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T5" target="MonitorDrones" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="300" yCoord="375"/>
+      <arcpath arcPointType="false" id="1" xCoord="223" yCoord="426"/>
+    </arc>
+    <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T5" target="ControlDrones" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="375"/>
+      <arcpath arcPointType="false" id="1" xCoord="408" yCoord="426"/>
+    </arc>
+    <arc id="A16" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ConnectionStable" target="T4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="644" yCoord="318"/>
+      <arcpath arcPointType="false" id="1" xCoord="545" yCoord="524"/>
+      <arcpath arcPointType="false" id="2" xCoord="330" yCoord="525"/>
+    </arc>
+  </net>
+  <net active="true" id="Drones" type="P/T net">
+    <place displayName="true" id="Scan" initialMarking="1" invariant="&lt; inf" name="Scan" nameOffsetX="0" nameOffsetY="0" positionX="270" positionY="150"/>
+    <place displayName="true" id="Checkplanthealth" initialMarking="0" invariant="&lt; inf" name="Checkplanthealth" nameOffsetX="0" nameOffsetY="0" positionX="150" positionY="390"/>
+    <place displayName="true" id="WateringPlants" initialMarking="0" invariant="&lt; inf" name="WateringPlants" nameOffsetX="0" nameOffsetY="0" positionX="390" positionY="330"/>
+    <place displayName="true" id="SendData" initialMarking="0" invariant="&lt; inf" name="SendData" nameOffsetX="0" nameOffsetY="0" positionX="150" positionY="270"/>
+    <transition angle="90" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="0" nameOffsetY="0" player="0" positionX="270" positionY="240" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="T1" infiniteServer="false" name="T1" nameOffsetX="0" nameOffsetY="0" player="0" positionX="270" positionY="465" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="0" nameOffsetY="0" player="0" positionX="135" positionY="330" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Scan" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="285" yCoord="179"/>
+      <arcpath arcPointType="false" id="1" xCoord="289" yCoord="250"/>
+    </arc>
+    <arc id="A2" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="WateringPlants" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="284" yCoord="259"/>
+      <arcpath arcPointType="false" id="1" xCoord="392" yCoord="336"/>
+    </arc>
+    <arc id="A3" inscription="[5,inf)" nameOffsetX="0" nameOffsetY="0" source="Checkplanthealth" target="T1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="177" yCoord="413"/>
+      <arcpath arcPointType="false" id="1" xCoord="274" yCoord="474"/>
+    </arc>
+    <arc id="A4" inscription="[5,inf)" nameOffsetX="0" nameOffsetY="0" source="WateringPlants" target="T1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="395" yCoord="356"/>
+      <arcpath arcPointType="false" id="1" xCoord="289" yCoord="475"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T1" target="Scan" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="269" yCoord="480"/>
+      <arcpath arcPointType="false" id="1" xCoord="71" yCoord="413"/>
+      <arcpath arcPointType="false" id="2" xCoord="69" yCoord="161"/>
+      <arcpath arcPointType="false" id="3" xCoord="270" yCoord="164"/>
+    </arc>
+    <arc id="A8" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="SendData" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="269" yCoord="255"/>
+      <arcpath arcPointType="false" id="1" xCoord="179" yCoord="280"/>
+    </arc>
+    <arc id="A9" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="SendData" target="T2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="162" yCoord="299"/>
+      <arcpath arcPointType="false" id="1" xCoord="154" yCoord="340"/>
+    </arc>
+    <arc id="A10" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T2" target="Checkplanthealth" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="149" yCoord="349"/>
+      <arcpath arcPointType="false" id="1" xCoord="160" yCoord="390"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="No Deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="VER 1" overApproximation="false" pTrie="true" query="AF Cotroller.VerifyConnection = 1" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="false" useTarOption="false"/>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Query Comment/Name Here" overApproximation="false" pTrie="true" query="AF Cotroller.ConnectionStable = 1" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="false" useTarOption="false"/>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Drone no Deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <k-bound bound="3"/>
+  <feature isGame="false" isTimed="true"/>
+</pnml>
